@@ -28,6 +28,7 @@ class CreateSubscriptionsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('customer_subscription');
         Schema::dropIfExists('subscriptions');
     }
 }
