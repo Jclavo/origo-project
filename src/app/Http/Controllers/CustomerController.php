@@ -45,7 +45,9 @@ class CustomerController extends ResponseController
             'phone' => ['regex:/^\(\d{2}\) \d{9}$/'], 
             'state' => ['required','max:45'], 
             'city' => ['required','max:45'], 
-            'birthdate' => ['required', 'date'] 
+            'birthdate' => ['required', 'date'],
+            'subscriptions' => 'nullable|array',
+            'subscriptions.*' => 'nullable|exists:subscriptions,id',
         ]);
         
         if ($validator->fails()) {
@@ -62,6 +64,9 @@ class CustomerController extends ResponseController
         $customer->birthdate = $request->birthdate;
 
         $customer->save();
+
+        //add subscriptions
+        $customer->subscriptions()->sync($request->subscriptions ?? []);
 
         return $this->sendResponse($customer->toArray(), 'Customer created');  
     }
@@ -118,7 +123,9 @@ class CustomerController extends ResponseController
             'phone' => ['regex:/^\(\d{2}\) \d{9}$/'], 
             'state' => ['required','max:45'], 
             'city' => ['required','max:45'], 
-            'birthdate' => ['required', 'date'] 
+            'birthdate' => ['required', 'date'],
+            'subscriptions' => 'nullable|array',
+            'subscriptions.*' => 'nullable|exists:subscriptions,id',
         ]);
         
         if ($validator->fails()) {
@@ -133,6 +140,9 @@ class CustomerController extends ResponseController
         $customer->birthdate = $request->birthdate;
 
         $customer->save();
+
+        //add subscriptions
+        $customer->subscriptions()->sync($request->subscriptions ?? []);
 
         return $this->sendResponse($customer->toArray(), 'Customer updated.');  
     }
