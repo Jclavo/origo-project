@@ -160,6 +160,21 @@ class CustomerController extends ResponseController
         if(is_null($customer)){
             return $this->sendError('Customer not found');
         }else{
+
+            //the states must be in a table
+            if ($customer->state == Customer::BANNED_STATE) {
+                return $this->sendResponse([], "Customer could not be deleted because belongs to " . Customer::BANNED_STATE);
+            }
+
+            foreach ($customer->subscriptions as $subscription) {
+
+                // if (in_array($subscription->name, Customer::getBannedSubscriptions())) {
+                if ($subscription->name == Customer::BANNED_SUBSCRIPTION) {
+                    return $this->sendResponse([], "Customer could not be deleted because his subscription is " . Customer::BANNED_SUBSCRIPTION);
+                }
+            }
+
+
             $customer->delete();
 
             return $this->sendResponse($customer->toArray(), "Customer deleted.");
