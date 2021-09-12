@@ -14,7 +14,7 @@ import { environment } from "../../../environments/environment";
 })
 export class CustomersService {
 
-  private apiRoot: string = environment.api + 'customers';
+  private apiRoot: string = environment.api + 'customers/';
 
   constructor(
     private http: HttpClient
@@ -65,7 +65,30 @@ export class CustomersService {
   }
 
 
-  // this function must be in a utl file, I worte it here to do it fast
+  delete(id: number): Observable<Response> {
+
+    let apiRoot = this.apiRoot + id;
+
+    return this.http.delete(apiRoot, this.getHeaders()).pipe(map(res => {
+
+      let response = new Response();
+      let resultRAW: any = res;
+
+      //Set response
+      response.status = resultRAW.status;
+      response.message = resultRAW.message;
+      return response;
+
+    }),
+      catchError(error => {
+        return throwError(error.message);
+      }));
+  }
+  
+
+
+
+  // this function must be in an "util" file, I wrote it here to do it fast.
   public getHeaders() {
     return {
       headers: new HttpHeaders({

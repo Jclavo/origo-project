@@ -40,7 +40,19 @@ export class CustomersComponent implements OnInit {
       }
     }, error => {
       this.snackBar.open(error, 'OK');
-      this.router.navigate(['/']);
+    });
+  }
+
+  delete(id: number) {
+
+    this.customersService.delete(id).subscribe(response => {
+
+      this.snackBar.open(response.message, 'OK');
+      if (response.status) {
+        this.getAll();
+      }
+    }, error => {
+      this.snackBar.open(error, 'OK');
     });
   }
 
