@@ -20,13 +20,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
+import { CustomersComponent } from './pages/customers/customers.component';
 // import {  } from '@angular/material/';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,

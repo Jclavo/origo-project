@@ -1,0 +1,63 @@
+<mat-table [dataSource]="dataSource">
+
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="name"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <!-- email Column -->
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="email"> {{row.email}} </mat-cell>
+    </ng-container>
+
+    <!-- phone Column -->
+    <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="phone"> {{row.phone}} </mat-cell>
+    </ng-container>
+
+    <!-- state Column -->
+    <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> State </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="state"> {{row.state}} </mat-cell>
+    </ng-container>
+
+    <!-- city Column -->
+    <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="city"> {{row.city}} </mat-cell>
+    </ng-container>
+
+    <!-- birthdate Column -->
+    <ng-container matColumnDef="birthdate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Birthdate </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="birthdate"> {{row.birthdate}} </mat-cell>
+    </ng-container>
+
+    <!-- subscriptions Column -->
+    <!-- <ng-container matColumnDef="birthdate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Birthdate </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="birthdate"> {{row.birthdate}} </mat-cell>
+    </ng-container> -->
+
+    <!-- Options Column -->
+    <ng-container matColumnDef="options">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> options </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="edit">
+            <button mat-button (click)="edit(row.id)" color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button (click)="delete(row.id)" color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+    
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+
+</mat-table>

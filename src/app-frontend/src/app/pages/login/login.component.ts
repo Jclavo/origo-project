@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         if (response.status) {
 
           console.log(response.message);
-          // this.router.navigate(['/home']);
+          this.router.navigate(['/customers']);
 
         }
         else {
