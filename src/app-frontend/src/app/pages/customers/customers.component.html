@@ -1,3 +1,13 @@
+<p>
+    <mat-toolbar color="primary">
+        <span>Customers</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="add-icon">
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-toolbar>
+</p>
+
 <mat-table [dataSource]="dataSource">
 
     <!-- name Column -->
@@ -42,7 +52,7 @@
         <mat-cell *matCellDef="let row" data-label="subscriptions">
             <mat-list>
                 <mat-list-item *ngFor="let subscription of row.subscriptions">{{subscription.name}}<br></mat-list-item>
-            </mat-list>            
+            </mat-list>
         </mat-cell>
     </ng-container>
 
@@ -58,7 +68,7 @@
             </button>
         </mat-cell>
     </ng-container>
-    
+
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
