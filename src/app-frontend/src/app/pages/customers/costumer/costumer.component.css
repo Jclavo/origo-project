@@ -26,3 +26,7 @@ mat-card-content {
     display: flex;
     justify-content: flex-end;
 }
+
+.custom-button {
+    width : 15em;
+}
