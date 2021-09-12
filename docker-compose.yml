@@ -40,3 +40,21 @@ services:
         - ./postgres/scripts:/docker-entrypoint-initdb.d # run scripts inmediatly
       networks: 
         - app-origo
+
+    angular-origo:
+      image: angular-origo
+      container_name: origo-frontend
+      build: 
+        context: .
+        dockerfile: angular.dockerfile
+      ports:
+        - 4200:4200
+      volumes:
+        - ./src/app-frontend:/usr/app
+
+      command: ash -c "npm install -y && ng serve --host 0.0.0.0" # For DEV 
+
+      networks: 
+        - app-origo
+
+      # command: tail -f /dev/null # keep open container 
