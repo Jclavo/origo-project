@@ -64,6 +64,51 @@ export class CustomersService {
       }));
   }
 
+  getById(id: number): Observable<Response> {
+
+    let apiRoot = this.apiRoot + id;
+
+    return this.http.get(apiRoot, this.getHeaders()).pipe(map(res => {
+
+      let response = new Response();
+      let resultRAW: any = res;
+
+      //Set response
+      response.status = resultRAW.status;
+      response.message = resultRAW.message;
+
+      if (resultRAW.result) {
+
+        let customer = new Customer();
+        customer.id = resultRAW.result?.id;
+        customer.name = resultRAW.result?.name;
+        customer.email = resultRAW.result?.email;
+        customer.phone = resultRAW.result?.phone;
+        customer.state = resultRAW.result?.state;
+        customer.city = resultRAW.result?.city;
+        customer.birthdate = resultRAW.result?.birthdate;
+
+        //set subcriptions
+        customer.mysubscriptions = resultRAW.result?.subscriptions?.map((record: Subscription) => {
+          let subcription = new Subscription();
+          subcription.id = record.id;
+          subcription.name = record.name;
+          subcription.price = record.price;
+          return subcription;
+        });
+
+        response.result = customer;
+
+      }
+
+      return response;
+
+    }),
+      catchError(error => {
+        return throwError(error.message);
+      }));
+  }
+
   create(customer: Customer): Observable<Response> {
 
     let apiRoot = this.apiRoot;
@@ -75,7 +120,29 @@ export class CustomersService {
 
       //Set response
       response.status = resultRAW.status;
-      response.message = resultRAW.message;     
+      response.message = resultRAW.message;
+
+      return response;
+
+    }),
+      catchError(error => {
+        return throwError(error.message);
+      }));
+  }
+
+  update(customer: Customer): Observable<Response> {
+
+    let apiRoot = this.apiRoot + customer.id;
+
+    return this.http.put(apiRoot, customer, this.getHeaders()).pipe(map(res => {
+
+      let response = new Response();
+      let resultRAW: any = res;
+
+      //Set response
+      response.status = resultRAW.status;
+      response.message = resultRAW.message;
+      //response.result = resultRAW.result;
 
       return response;
 
@@ -104,7 +171,9 @@ export class CustomersService {
         return throwError(error.message);
       }));
   }
-  
+
+
+
 
 
 

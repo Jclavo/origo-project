@@ -60,7 +60,7 @@
     <ng-container matColumnDef="options">
         <mat-header-cell *matHeaderCellDef mat-sort-header> options </mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="edit">
-            <button mat-button (click)="edit(row.id)" color="primary">
+            <button mat-button routerLink="/customer/{{row.id}}" color="primary">
                 <mat-icon>edit</mat-icon>
             </button>
             <button mat-button (click)="delete(row.id)" color="warn">
