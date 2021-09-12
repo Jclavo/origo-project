@@ -36,11 +36,15 @@
         <mat-cell *matCellDef="let row" data-label="birthdate"> {{row.birthdate}} </mat-cell>
     </ng-container>
 
-    <!-- subscriptions Column -->
-    <!-- <ng-container matColumnDef="birthdate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Birthdate </mat-header-cell>
-        <mat-cell *matCellDef="let row" data-label="birthdate"> {{row.birthdate}} </mat-cell>
-    </ng-container> -->
+    <!--subscriptions Column -->
+    <ng-container matColumnDef="subscriptions">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Subscriptions </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="subscriptions">
+            <mat-list>
+                <mat-list-item *ngFor="let subscription of row.subscriptions">{{subscription.name}}<br></mat-list-item>
+            </mat-list>            
+        </mat-cell>
+    </ng-container>
 
     <!-- Options Column -->
     <ng-container matColumnDef="options">

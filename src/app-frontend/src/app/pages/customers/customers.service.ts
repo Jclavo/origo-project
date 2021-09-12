@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 
 import { Customer } from '../../models/customer.model'
+import { Subscription } from '../../models/subscription.model'
 import { Response } from '../../models/response.model'
 
 import { environment } from "../../../environments/environment";
@@ -42,6 +43,15 @@ export class CustomersService {
         customer.state = record.state;
         customer.city = record.city;
         customer.birthdate = record.birthdate;
+
+        //set subcriptions
+        customer.subscriptions = record.subscriptions?.map((record: any) => {
+          let subcription = new Subscription();
+          subcription.id = record.id;
+          subcription.name = record.name;
+          subcription.price = record.price;
+          return subcription;
+        });
 
         return customer;
       });

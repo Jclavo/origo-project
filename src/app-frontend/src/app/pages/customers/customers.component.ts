@@ -16,7 +16,7 @@ export class CustomersComponent implements OnInit {
 
   customers : Array<Customer> = [];
   // dataSource: MatTableDataSource<Customer> = new MatTableDataSource(this.customers);
-  displayedColumns = ['name', 'email', 'phone', 'state', 'city', 'birthdate', 'options'];
+  displayedColumns = ['name', 'email', 'phone', 'state', 'city', 'birthdate', 'subscriptions', 'options'];
 
   dataSource: MatTableDataSource<Customer>;
   constructor(private customersService: CustomersService) { }

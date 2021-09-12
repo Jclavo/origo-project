@@ -1,3 +1,6 @@
+
+import { Subscription } from './subscription.model'
+
 export class Customer {
     id: number = 0;
     name: string = '';
@@ -6,4 +9,5 @@ export class Customer {
     state: string = '';
     city: string = '';
     birthdate: string = '';
+    subscriptions : Array<Subscription> = []
 }
