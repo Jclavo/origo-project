@@ -45,7 +45,7 @@ class CustomerController extends ResponseController
             'phone' => ['regex:/^\(\d{2}\) \d{9}$/'], 
             'state' => ['required','max:45'], 
             'city' => ['required','max:45'], 
-            'birthdate' => ['required', 'date'],
+            'birthdate' => ['required', 'date','before:today'],
             'subscriptions' => 'nullable|array',
             'subscriptions.*' => 'nullable|exists:subscriptions,id',
         ]);
@@ -123,7 +123,7 @@ class CustomerController extends ResponseController
             'phone' => ['regex:/^\(\d{2}\) \d{9}$/'], 
             'state' => ['required','max:45'], 
             'city' => ['required','max:45'], 
-            'birthdate' => ['required', 'date'],
+            'birthdate' => ['required', 'date', 'before:today'],
             'subscriptions' => 'nullable|array',
             'subscriptions.*' => 'nullable|exists:subscriptions,id',
         ]);
