@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { CustomersService } from './../customers.service';
 import { SubscriptionsService } from './../../subscriptions/subscriptions.service';
+import { UtilsService } from './../../../helpers/utils.service';
 
 import { Customer } from './../../../models/customer.model'
 import { Subscription } from './../../../models/subscription.model'
@@ -22,7 +23,8 @@ export class CostumerComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private subscriptionsService: SubscriptionsService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private utilsService: UtilsService,) {
 
   }
 
@@ -62,6 +64,7 @@ export class CostumerComponent implements OnInit {
       }
     }, error => {
       this.snackBar.open(error, 'OK');
+      this.utilsService.redirectToLogin();
     });
   }
 
@@ -75,6 +78,7 @@ export class CostumerComponent implements OnInit {
 
     }, error => {
       this.snackBar.open(error, 'OK');
+      this.utilsService.redirectToLogin();
     });
   }
 
@@ -101,6 +105,7 @@ export class CostumerComponent implements OnInit {
 
     }, error => {
       this.snackBar.open(error, 'OK');
+      this.utilsService.redirectToLogin();
     });
   }
 
@@ -114,6 +119,7 @@ export class CostumerComponent implements OnInit {
       }
     }, error => {
       this.snackBar.open(error, 'OK');
+      this.utilsService.redirectToLogin();
     });
   }
 

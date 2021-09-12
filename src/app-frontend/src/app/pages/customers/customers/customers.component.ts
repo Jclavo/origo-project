@@ -8,6 +8,7 @@ import { Customer } from '../../../models/customer.model'
 import { Response } from '../../../models/response.model'
 
 import { CustomersService } from './../customers.service';
+import { UtilsService } from './../../../helpers/utils.service';
 
 @Component({
   selector: 'app-customers',
@@ -22,7 +23,8 @@ export class CustomersComponent implements OnInit {
   dataSource: MatTableDataSource<Customer>;
   constructor(private customersService: CustomersService,
     private router: Router,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private utilsService: UtilsService,) { }
 
   ngOnInit(): void {
     this.getAll()
@@ -40,6 +42,7 @@ export class CustomersComponent implements OnInit {
       }
     }, error => {
       this.snackBar.open(error, 'OK');
+      this.utilsService.redirectToLogin();
     });
   }
 
@@ -53,6 +56,7 @@ export class CustomersComponent implements OnInit {
       }
     }, error => {
       this.snackBar.open(error, 'OK');
+      this.utilsService.redirectToLogin();
     });
   }
 
