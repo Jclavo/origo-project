@@ -13,13 +13,6 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent implements OnInit {
 
-  // form: FormGroup = new FormGroup({
-  //   // email: new FormControl('', ),
-  //   // password: new FormControl('',]),
-  //   email: new FormControl(''),Validators.email
-  //   password: new FormControl(''),
-  // });
-
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
@@ -33,6 +26,8 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    //clean secret_token
+    localStorage.removeItem("secret_token");
   }
 
 
@@ -47,7 +42,7 @@ export class LoginComponent implements OnInit {
 
         if (response.status) {
 
-          console.log(response.message);
+          localStorage.setItem('secret_token', response.result.token) // get token
           this.router.navigate(['/customers']);
 
         }

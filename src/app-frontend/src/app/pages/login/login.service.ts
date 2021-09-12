@@ -27,14 +27,13 @@ export class LoginService {
       response.message = resultRAW.message;
 
       if (resultRAW.result) {
-        // let user = new User();
+        let user = new User();
 
-        // user.id = resultRAW.result?.id;
-        // user.login = resultRAW.result?.login;
-      
+        user.id = resultRAW.result?.id;
+        user.email = resultRAW.result?.name;
+        user.token = resultRAW.result?.token;
+
         response.result = user;
-        //response.records = resultRAW.result?.length;
-
       }
 
       return response;

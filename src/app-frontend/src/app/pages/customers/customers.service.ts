@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 
 import { Customer } from '../../models/customer.model'
@@ -24,7 +24,7 @@ export class CustomersService {
 
     let apiRoot = this.apiRoot;
 
-    return this.http.get(apiRoot).pipe(map(res => {
+    return this.http.get(apiRoot, this.getHeaders()).pipe(map(res => {
 
       let response = new Response();
       let resultRAW: any = res;
@@ -62,6 +62,16 @@ export class CustomersService {
       catchError(error => {
         return throwError(error.message);
       }));
+  }
+
+
+  // this function must be in a utl file, I worte it here to do it fast
+  public getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + localStorage.getItem('secret_token')
+      })
+    };
   }
 
 }

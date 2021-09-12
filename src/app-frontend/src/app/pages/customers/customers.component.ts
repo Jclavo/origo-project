@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 
 import { Customer } from '../../models/customer.model'
 import { Response } from '../../models/response.model'
@@ -19,7 +20,8 @@ export class CustomersComponent implements OnInit {
   displayedColumns = ['name', 'email', 'phone', 'state', 'city', 'birthdate', 'subscriptions', 'options'];
 
   dataSource: MatTableDataSource<Customer>;
-  constructor(private customersService: CustomersService) { }
+  constructor(private customersService: CustomersService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getAll()
@@ -32,14 +34,13 @@ export class CustomersComponent implements OnInit {
         this.customers = response.result;
         console.log(this.customers)
         this.dataSource = new MatTableDataSource(this.customers);
-        // this.dataSource.connect().next(this.customers);
-        //console.log(this.dataSource.data)
         
       } else {
         console.log(response.message);
       }
     }, error => {
-      console.log(error);
+      
+      this.router.navigate(['/']);
     });
   }
 
