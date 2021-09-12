@@ -18,6 +18,7 @@ Route::post('login', 'UserController@login');
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('customers', 'CustomerController');
+    Route::resource('subscriptions', 'SubscriptionController');
 });
 
 
