@@ -106,6 +106,8 @@ class UserController extends ResponseController
             return $this->sendError("email/password wrong.");  
         }
 
+        Auth::user()->token = Auth::user()->createToken(Auth::user()->name)->plainTextToken;
+
         return $this->sendResponse(Auth::user()->toArray(), "Login ok");          
     }
 }
