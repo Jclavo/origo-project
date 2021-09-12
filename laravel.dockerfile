@@ -21,7 +21,7 @@ RUN apk add --no-cache $PHPIZE_DEPS \
 WORKDIR /var/www/html
 
 # copy code
-COPY ./src /var/www/html
+COPY ./src/app-backend /var/www/html
 
 # install ionic and then npm dependecies from json
 RUN composer install --ignore-platform-reqs
