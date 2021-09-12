@@ -45,7 +45,7 @@ export class CustomersService {
         customer.birthdate = record.birthdate;
 
         //set subcriptions
-        customer.subscriptions = record.subscriptions?.map((record: any) => {
+        customer.mysubscriptions = record.subscriptions?.map((record: Subscription) => {
           let subcription = new Subscription();
           subcription.id = record.id;
           subcription.name = record.name;

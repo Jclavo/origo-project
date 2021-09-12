@@ -9,5 +9,6 @@ export class Customer {
     state: string = '';
     city: string = '';
     birthdate: string = '';
-    subscriptions : Array<Subscription> = []
+    subscriptions : Array<number> = []
+    mysubscriptions : Array<Subscription> = []
 }
