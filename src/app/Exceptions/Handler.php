@@ -50,6 +50,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        // ATTENTION: check what kind of exception is comming
+        // $response = ['status' => false, 'message' => $exception->getMessage()];
+        $response = ['status' => false, 'message' => "Unauthenticated"];
+        // if($exception instanceof NotFoundHttpException)
+        // {
+        //     return response()->json($response, 401);
+        // }
+        return response()->json($response, 401);
     }
 }
