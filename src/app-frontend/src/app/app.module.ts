@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { LoginComponent } from './pages/login/login.component';
+import { CustomersComponent } from './pages/customers/customers/customers.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,9 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { LoginComponent } from './pages/login/login.component';
-import { CustomersComponent } from './pages/customers/customers.component';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CostumerComponent } from './pages/customers/costumer/costumer.component';
 // import {  } from '@angular/material/';
 
 

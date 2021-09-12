@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from "@angular/material/snack-bar";
 
-import { Customer } from '../../models/customer.model'
-import { Response } from '../../models/response.model'
+import { Customer } from '../../../models/customer.model'
+import { Response } from '../../../models/response.model'
 
-import { CustomersService } from './customers.service';
+import { CustomersService } from './../customers.service';
 
 @Component({
   selector: 'app-customers',
