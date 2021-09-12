@@ -35,6 +35,10 @@
     </mat-form-field>
   </mat-card-content>
 
+  <mat-card-content *ngFor="let subscription of subscriptions">
+      <mat-checkbox [(ngModel)]="subscription.checked" [name]="subscription.id">{{subscription.name}}</mat-checkbox>
+  </mat-card-content>
+
   <mat-card-actions>
     <button mat-raised-button (click)="save()" color="primary">Save</button>
   </mat-card-actions>

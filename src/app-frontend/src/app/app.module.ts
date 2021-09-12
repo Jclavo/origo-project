@@ -23,6 +23,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 // import {  } from '@angular/material/';
 
 
@@ -50,7 +51,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatMenuModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
