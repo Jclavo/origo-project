@@ -3,6 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 
+import { UtilsService } from '../../helpers/utils.service'
 import { Customer } from '../../models/customer.model'
 import { Subscription } from '../../models/subscription.model'
 import { Response } from '../../models/response.model'
@@ -17,14 +18,15 @@ export class CustomersService {
   private apiRoot: string = environment.api + 'customers/';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private utilsService: UtilsService
   ) { }
 
   getAll(): Observable<Response> {
 
     let apiRoot = this.apiRoot;
 
-    return this.http.get(apiRoot, this.getHeaders()).pipe(map(res => {
+    return this.http.get(apiRoot, this.utilsService.getHeaders()).pipe(map(res => {
 
       let response = new Response();
       let resultRAW: any = res;
@@ -68,7 +70,7 @@ export class CustomersService {
 
     let apiRoot = this.apiRoot + id;
 
-    return this.http.get(apiRoot, this.getHeaders()).pipe(map(res => {
+    return this.http.get(apiRoot, this.utilsService.getHeaders()).pipe(map(res => {
 
       let response = new Response();
       let resultRAW: any = res;
@@ -113,7 +115,7 @@ export class CustomersService {
 
     let apiRoot = this.apiRoot;
 
-    return this.http.post(apiRoot, customer, this.getHeaders()).pipe(map(res => {
+    return this.http.post(apiRoot, customer, this.utilsService.getHeaders()).pipe(map(res => {
 
       let response = new Response();
       let resultRAW: any = res;
@@ -134,7 +136,7 @@ export class CustomersService {
 
     let apiRoot = this.apiRoot + customer.id;
 
-    return this.http.put(apiRoot, customer, this.getHeaders()).pipe(map(res => {
+    return this.http.put(apiRoot, customer, this.utilsService.getHeaders()).pipe(map(res => {
 
       let response = new Response();
       let resultRAW: any = res;
@@ -156,7 +158,7 @@ export class CustomersService {
 
     let apiRoot = this.apiRoot + id;
 
-    return this.http.delete(apiRoot, this.getHeaders()).pipe(map(res => {
+    return this.http.delete(apiRoot, this.utilsService.getHeaders()).pipe(map(res => {
 
       let response = new Response();
       let resultRAW: any = res;
@@ -171,19 +173,4 @@ export class CustomersService {
         return throwError(error.message);
       }));
   }
-
-
-
-
-
-
-  // this function must be in an "util" file, I wrote it here to do it fast.
-  public getHeaders() {
-    return {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + localStorage.getItem('secret_token')
-      })
-    };
-  }
-
 }

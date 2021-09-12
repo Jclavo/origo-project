@@ -3,7 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 
-import { Customer } from '../../models/customer.model'
+import { UtilsService } from '../../helpers/utils.service'
 import { Subscription } from '../../models/subscription.model'
 import { Response } from '../../models/response.model'
 
@@ -17,14 +17,15 @@ export class SubscriptionsService {
   private apiRoot: string = environment.api + 'subscriptions/';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private utilsService: UtilsService
   ) { }
 
   getAll(): Observable<Response> {
 
     let apiRoot = this.apiRoot;
 
-    return this.http.get(apiRoot, this.getHeaders()).pipe(map(res => {
+    return this.http.get(apiRoot, this.utilsService.getHeaders()).pipe(map(res => {
 
       let response = new Response();
       let resultRAW: any = res;
@@ -50,12 +51,4 @@ export class SubscriptionsService {
       }));
   }
 
-    // this function must be in an "util" file, I wrote it here to do it fast.
-    public getHeaders() {
-      return {
-        headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + localStorage.getItem('secret_token')
-        })
-      };
-    }
 }
