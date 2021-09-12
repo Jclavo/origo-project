@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         this.snackBar.open(error, 'OK');
       });
     } else {
-      this.snackBar.open('check your credentials', 'OK');
+      this.snackBar.open('Check your credentials format.', 'OK');
     }
 
   }
