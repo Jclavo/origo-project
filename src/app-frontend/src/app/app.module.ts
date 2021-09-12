@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
 import { CustomersComponent } from './pages/customers/customers.component';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 // import {  } from '@angular/material/';
 
 
@@ -46,7 +47,8 @@ import { CustomersComponent } from './pages/customers/customers.component';
     MatTableModule,
     MatMenuModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
+
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 import { User } from '../../models/user.model';
 import { Response } from '../../models/response.model';
@@ -18,12 +20,12 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required]],
   });
 
-  error: any
   user = new User()
 
   constructor(private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router) { }
+    private router: Router,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     //clean secret_token
@@ -41,20 +43,18 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.user).subscribe((response: Response) => {
 
         if (response.status) {
-
           localStorage.setItem('secret_token', response.result.token) // get token
           this.router.navigate(['/customers']);
-
         }
         else {
-          this.error = response.message;
+          this.snackBar.open(response.message, 'OK');
         }
 
       }, (error: any) => {
-        this.error =  error;
+        this.snackBar.open(error, 'OK');
       });
     } else {
-      this.error = "check your data";
+      this.snackBar.open('check your credentials', 'OK');
     }
 
   }
