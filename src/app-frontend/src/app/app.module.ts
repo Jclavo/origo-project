@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './pages/login/login.component';
 import { CustomersComponent } from './pages/customers/customers/customers.component';
+import { CostumerComponent } from './pages/customers/costumer/costumer.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,7 +23,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { CostumerComponent } from './pages/customers/costumer/costumer.component';
 // import {  } from '@angular/material/';
 
 
@@ -30,7 +30,8 @@ import { CostumerComponent } from './pages/customers/costumer/costumer.component
   declarations: [
     AppComponent,
     LoginComponent,
-    CustomersComponent
+    CustomersComponent,
+    CostumerComponent
   ],
   imports: [
     BrowserModule,

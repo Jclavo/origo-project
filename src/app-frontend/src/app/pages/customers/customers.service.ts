@@ -64,6 +64,26 @@ export class CustomersService {
       }));
   }
 
+  create(customer: Customer): Observable<Response> {
+
+    let apiRoot = this.apiRoot;
+
+    return this.http.post(apiRoot, customer, this.getHeaders()).pipe(map(res => {
+
+      let response = new Response();
+      let resultRAW: any = res;
+
+      //Set response
+      response.status = resultRAW.status;
+      response.message = resultRAW.message;     
+
+      return response;
+
+    }),
+      catchError(error => {
+        return throwError(error.message);
+      }));
+  }
 
   delete(id: number): Observable<Response> {
 
