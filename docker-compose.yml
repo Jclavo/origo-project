@@ -36,7 +36,7 @@ services:
         - 5433:5432
       volumes:
         - ./postgres/conf.d/my-postgres.conf:/etc/postgresql/postgresql.conf # set configuations
-        - ./postgres/data:/var/lib/postgresql/data #store data
+        - ./postgres/data:/var/lib/postgresql/data # store data: create folder the first time
         - ./postgres/scripts:/docker-entrypoint-initdb.d # run scripts inmediatly
       networks: 
         - app-origo-network
