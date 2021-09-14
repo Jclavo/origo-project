@@ -8,17 +8,17 @@ This is an basic CRUD sample, using Angular + Laravel + Postgres running in a do
 - Angular Material
 - API Rest
 
-# set up project
+# Set up project
 
 - Clone the project
 - docker-compose build
 - docker-compose up
 
-# set up Database (Postgres)
+# Set up database: Postgres
 
 - create the folder data in "./postgres/[data]"
 
-# set up Backend (Laravel)
+# set up backend: Laravel
 
 [step#1]
 - create .env file based on .env.example
@@ -34,7 +34,7 @@ This is an basic CRUD sample, using Angular + Laravel + Postgres running in a do
 [step#4]
 - go to ./src/app-backend/database/postman (postman file to test API)
 
-# set up Frontend (Angular)
+# set up frontend: Angular
 
 [step#1]
 - http://localhost:4200 (web url)
