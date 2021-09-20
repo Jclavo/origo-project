@@ -1,4 +1,4 @@
-# Origo Tech Tests
+# Sample Tech Tests
 
 This is an basic CRUD sample, using Angular + Laravel + Postgres running in a docker container.
 
